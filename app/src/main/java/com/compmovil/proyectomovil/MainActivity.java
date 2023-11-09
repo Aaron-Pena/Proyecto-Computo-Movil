@@ -13,8 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private Button Btn_Entrar,Btn_Registrar;
     private EditText passwordField, userField;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +28,16 @@ public class MainActivity extends AppCompatActivity {
         Btn_Entrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(userField.getText().toString().equals("123")&&passwordField.getText().toString().equals("123")){
+                if(passwordField.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Procesando...",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this,Notas.class);
                     startActivity(intent);
+
+                    intent.putExtra("_user",userField.getText().toString());
+                    System.out.println("Mandara esto: "+userField.getText().toString());
+                    startActivity(intent);
+                    finish(); // Cierra la actividad actual
+
                 }else {
                     Toast.makeText(getApplicationContext(), "Datos incorrectos. \nVuelva a intentar",Toast.LENGTH_SHORT).show();
                 }
