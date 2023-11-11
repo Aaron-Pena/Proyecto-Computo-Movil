@@ -8,16 +8,15 @@
     android:fillViewport="true">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".Notas">
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -31,79 +30,215 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="30dp">
+                    android:padding="15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:layout_marginBottom="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="30dp"
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="Notas"
                         android:textColor="@color/black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/Btn_Create"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:text="Crear Nota">
+                    </Button>
 
+                    <!-- Carta de Notas -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/NoteLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="350dp"
-                        android:layout_height="300dp"
+                        android:id="@+id/NotaNueva"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         app:cardCornerRadius="10dp"
                         android:layout_margin="10dp"
                         app:cardBackgroundColor="@color/background"
                        >
                         <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="vertical"
                             android:padding="30dp"
                             app:cardCornerRadius="10dp"
                             >
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <!-- TextView y EditText para Fecha -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="40dp"
-                                android:layout_marginBottom="40dp"
-                                android:gravity="center"
-                                android:padding="5dp"
-                                android:text="Autor:"
-                                android:textColor="@color/black"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Fecha de entrega:"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <Button
+                                    android:id="@+id/btnDatePicker"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Date"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/white"
+                                    android:onClick="onDatePickerButtonClick"/>
+
+                            </LinearLayout>
 
                             <TextView
+                                android:id="@+id/textViewFechaSeleccionada"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                                android:gravity="center"
-                                android:padding="5dp"
-                                android:text="Titulo:"
-                                android:textColor="@color/black"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="20dp"
+                                android:background="@color/white"
+                                android:text="00 / 00 / 00"
                                 android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:textColor="@color/black"/>
 
-                            <TextView
+                            <!-- TextView y EditText para Autor -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Autor:"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textViewAutor"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="USER" />
+
+                            </LinearLayout>
+
+
+                            <!-- TextView y EditText para Titulo -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Titulo:"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/editTextTitulo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Ingrese el título" />
+
+                            </LinearLayout>
+
+                            <!-- TextView y EditText para Descripcion -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Descripcion:"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/editTextDescripcion"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Ingrese la descripción" />
+
+                            </LinearLayout>
+
+                            <CheckBox
+                                android:id="@+id/checkBoxFinalizado"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                                android:gravity="center"
-                                android:padding="5dp"
-                                android:text="Descripcion:"
-                                android:textColor="@color/black"
+                                android:layout_marginTop="10dp"
+                                android:text="Finalizado"
                                 android:textSize="15sp"
-                                android:textStyle="bold" />
+                                android:textColor="@color/black"/>
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp">
+
+                                <Button
+                                    android:id="@+id/Btn_Delete"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="10dp"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/white"
+                                    android:text="Delete"/>
+
+                                <Button
+                                    android:id="@+id/Btn_Edit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/white"
+                                    android:text="Edit"/>
+
+                                <Button
+                                    android:id="@+id/Btn_Save"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/white"
+                                    android:text="Save"/>
+
+                            </LinearLayout>
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
                     </androidx.cardview.widget.CardView>
 
-
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 
