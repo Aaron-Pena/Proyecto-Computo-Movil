@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -27,14 +28,14 @@ import java.util.List;
 
 public class Notas extends AppCompatActivity {
 
-    private Button btnDatePicker, Btn_Create, Btn_Save, Btn_Delete, Btn_Edit;
+    private Button btnDatePicker, Btn_Create, Btn_Save, Btn_Delete, Btn_Edit,Btn_Admin;
     private EditText editTextTitulo, editTextDescripcion;
     private TextView textViewFechaSeleccionada, textViewAutor;
     private CheckBox checkBoxFinalizado;
     private CardView NotaNueva;
     private LinearLayout NoteLayout;
 
-    private static ArrayList<Nota> listaNotas = new ArrayList<>();
+    public static ArrayList<Nota> listaNotas = new ArrayList<>();
     public static final String PREFS_NAME = "MyPrefsFile2";
 
     // Variable para controlar si se está editando una nota
@@ -49,6 +50,10 @@ public class Notas extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notas);
+
+        listaNotas = obtenerListaNotasDesdePrefs();
+
+
 
         String textoRecibido = getIntent().getStringExtra("_user");
         textViewAutor = findViewById(R.id.textViewAutor);
@@ -65,6 +70,7 @@ public class Notas extends AppCompatActivity {
         Btn_Save = findViewById(R.id.Btn_Save);
         Btn_Delete = findViewById(R.id.Btn_Delete);
         Btn_Edit = findViewById(R.id.Btn_Edit);
+        Btn_Admin=findViewById(R.id.Btn_Admin);
         btnDatePicker = findViewById(R.id.btnDatePicker);
         checkBoxFinalizado = findViewById(R.id.checkBoxFinalizado);
         NotaNueva = findViewById(R.id.NotaNueva);
@@ -86,6 +92,19 @@ public class Notas extends AppCompatActivity {
     }
 
 
+
+    private ArrayList<Nota> obtenerListaNotasDesdePrefs() {
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = preferences.getString("listaNotas", "");
+
+        if (json.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        Type type = new TypeToken<ArrayList<Nota>>() {}.getType();
+        return gson.fromJson(json, type);
+    }
 
     private void configurarBotones() {
         Btn_Create.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +135,18 @@ public class Notas extends AppCompatActivity {
                 habilitarEdicion();
             }
         });
+
+        Btn_Admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("Notas", "Tamaño de listaNotas: " + listaNotas.size());
+                for (Nota autor : Notas.listaNotas) {
+                    System.out.println("ID: "+autor.getId()+"\nAutor: " + autor.getAutor() +"\nTitulo: "+autor.getTitulo()+ "\nDescripcion: "+ autor.getDescripcion()+"\nFecha: "+autor.getFecha()+"\nStatus:"+autor.isFinalizado());
+                }
+
+            }
+        });
+
     }
 
     private void saveNote(int id,String autor, String titulo, String descripcion, String fecha, boolean finalizado){
@@ -139,9 +170,6 @@ public class Notas extends AppCompatActivity {
     }
 
     private void mostrarNotaNueva() {
-        if (Notas.listaNotas == null) {
-            Notas.listaNotas = new ArrayList<>();
-        }
 
         // Mostrar la NotaNueva
         NotaNueva.setVisibility(View.VISIBLE);
@@ -158,10 +186,6 @@ public class Notas extends AppCompatActivity {
         // Cambiar el estado de la variable de edición
         editandoNota = false;
         posicionNotaEditando = -1;
-
-        for (Nota autor : Notas.listaNotas) {
-            System.out.println("ID: "+autor.getId()+"\nAutor: " + autor.getAutor() +"\nTitulo: "+autor.getTitulo()+ "\nDescripcion: "+ autor.getDescripcion()+"\nFecha: "+autor.getFecha()+"\nStatus:"+autor.isFinalizado());
-        }
 
     }
 
