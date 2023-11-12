@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,6 +14,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.cardview.widget.CardView;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +37,7 @@ public class Notas extends AppCompatActivity {
     private TextView textViewFechaSeleccionada, textViewAutor;
     private CheckBox checkBoxFinalizado;
     private CardView NotaNueva;
-    private LinearLayout NoteLayout;
+    private LinearLayoutCompat NoteLayout;
 
     public static ArrayList<Nota> listaNotas = new ArrayList<>();
     public static final String PREFS_NAME = "MyPrefsFile2";
@@ -53,7 +57,7 @@ public class Notas extends AppCompatActivity {
 
         listaNotas = obtenerListaNotasDesdePrefs();
 
-
+        NoteLayout = findViewById(R.id.NoteLayout);
 
         String textoRecibido = getIntent().getStringExtra("_user");
         textViewAutor = findViewById(R.id.textViewAutor);
@@ -61,7 +65,6 @@ public class Notas extends AppCompatActivity {
 
 
         textViewFechaSeleccionada = findViewById(R.id.textViewFechaSeleccionada);
-        textViewAutor = findViewById(R.id.textViewAutor);
 
         editTextTitulo = findViewById(R.id.editTextTitulo);
         editTextDescripcion = findViewById(R.id.editTextDescripcion);
@@ -98,12 +101,17 @@ public class Notas extends AppCompatActivity {
         Gson gson = new Gson();
         String json = preferences.getString("listaNotas", "");
 
-        if (json.isEmpty()) {
-            return new ArrayList<>();
-        }
+        try {
+            if (json.isEmpty()) {
+                return new ArrayList<>();
+            }
 
         Type type = new TypeToken<ArrayList<Nota>>() {}.getType();
         return gson.fromJson(json, type);
+    } catch (Exception e) {
+        Log.e("Notas", "Error al leer la lista de notas desde SharedPreferences", e);
+        return new ArrayList<>();
+    }
     }
 
     private void configurarBotones() {
@@ -151,10 +159,6 @@ public class Notas extends AppCompatActivity {
 
     private void saveNote(int id,String autor, String titulo, String descripcion, String fecha, boolean finalizado){
 
-        if (Notas.listaNotas == null) {
-            Notas.listaNotas = new ArrayList<>();
-        }
-
         Notas.listaNotas.add(new Nota(id,autor,titulo,descripcion,fecha,finalizado));
 
         // Guarda la lista de usuarios en preferencias compartidas
@@ -164,12 +168,14 @@ public class Notas extends AppCompatActivity {
         String json = gson.toJson(Notas.listaNotas);
         editor.putString("listaNotas", json);
         editor.apply();
-        System.out.println("Datos: "+titulo);
+
+        Log.d("Notas", "Datos guardados: " + titulo);
         Toast.makeText(getApplicationContext(), "Nota Agregada", Toast.LENGTH_SHORT).show();
 
     }
 
     private void mostrarNotaNueva() {
+
 
         // Mostrar la NotaNueva
         NotaNueva.setVisibility(View.VISIBLE);
@@ -188,6 +194,9 @@ public class Notas extends AppCompatActivity {
         posicionNotaEditando = -1;
 
     }
+
+
+
 
     private void habilitarEdicion() {
         // Habilitar la edición de los campos

@@ -87,7 +87,7 @@
                             >
 
                             <!-- TextView y EditText para Fecha -->
-                            <LinearLayout
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
@@ -111,7 +111,7 @@
                                     android:textColor="@color/white"
                                     android:onClick="onDatePickerButtonClick"/>
 
-                            </LinearLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
                             <TextView
                                 android:id="@+id/textViewFechaSeleccionada"
@@ -125,7 +125,7 @@
                                 android:textColor="@color/black"/>
 
                             <!-- TextView y EditText para Autor -->
-                            <LinearLayout
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
@@ -147,11 +147,11 @@
                                     android:layout_weight="1"
                                     android:hint="USER" />
 
-                            </LinearLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
 
                             <!-- TextView y EditText para Titulo -->
-                            <LinearLayout
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
@@ -173,10 +173,10 @@
                                     android:layout_weight="1"
                                     android:hint="Ingrese el título" />
 
-                            </LinearLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
                             <!-- TextView y EditText para Descripcion -->
-                            <LinearLayout
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
@@ -198,7 +198,7 @@
                                     android:layout_weight="1"
                                     android:hint="Ingrese la descripción" />
 
-                            </LinearLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
                             <CheckBox
                                 android:id="@+id/checkBoxFinalizado"
@@ -209,7 +209,7 @@
                                 android:textSize="15sp"
                                 android:textColor="@color/black"/>
 
-                            <LinearLayout
+                            <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
@@ -242,7 +242,7 @@
                                     android:textColor="@color/white"
                                     android:text="Save"/>
 
-                            </LinearLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
