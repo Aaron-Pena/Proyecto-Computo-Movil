@@ -32,20 +32,17 @@ import java.util.List;
 
 public class Notas extends AppCompatActivity {
 
-    private Button btnDatePicker, Btn_Create, Btn_Save, Btn_Delete, Btn_Edit,Btn_Admin;
-    private EditText editTextTitulo, editTextDescripcion;
-    private TextView textViewFechaSeleccionada, textViewAutor;
+    private Button btnDatePicker, Btn_Save, Btn_Edit,btnEditId,btnFinalizarId;
+    private EditText editTextTitulo, editTextDescripcion,editTextEditNote,editTextFinalizar;
+    private TextView textViewFechaSeleccionada, textViewAutor, Shownotes;
     private CheckBox checkBoxFinalizado;
     private CardView NotaNueva;
     private LinearLayoutCompat NoteLayout;
 
     public static ArrayList<Nota> listaNotas = new ArrayList<>();
     public static final String PREFS_NAME = "MyPrefsFile2";
-
-    // Variable para controlar si se está editando una nota
     private boolean editandoNota = false;
 
-    // Variable para mantener la posición de la nota en edición
     private int posicionNotaEditando = -1;
 
     private int _id= 1;
@@ -65,35 +62,33 @@ public class Notas extends AppCompatActivity {
 
 
         textViewFechaSeleccionada = findViewById(R.id.textViewFechaSeleccionada);
-
+        Shownotes = findViewById(R.id.Shownotes);
         editTextTitulo = findViewById(R.id.editTextTitulo);
         editTextDescripcion = findViewById(R.id.editTextDescripcion);
+        editTextEditNote = findViewById(R.id.editTextEditNote);
+        editTextFinalizar = findViewById(R.id.editTextFinalizar);
 
-        Btn_Create = findViewById(R.id.Btn_Create);
         Btn_Save = findViewById(R.id.Btn_Save);
-        Btn_Delete = findViewById(R.id.Btn_Delete);
+        btnEditId = findViewById(R.id.btnEditId);
+        btnFinalizarId= findViewById(R.id.btnFinalizarId);
+
         Btn_Edit = findViewById(R.id.Btn_Edit);
-        Btn_Admin=findViewById(R.id.Btn_Admin);
         btnDatePicker = findViewById(R.id.btnDatePicker);
         checkBoxFinalizado = findViewById(R.id.checkBoxFinalizado);
         NotaNueva = findViewById(R.id.NotaNueva);
 
-        // Ocultar la NotaNueva al inicio
-        NotaNueva.setVisibility(View.GONE);
+
+        mostrarNotasEnTextView();
+
+        deshabilitarEdicion();
+
 
         // Configurar los listeners de los botones
         configurarBotones();
 
 
-        // Boton para fecha
-        btnDatePicker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mostrarDatePicker();
-            }
-        });
-    }
 
+    }
 
 
     private ArrayList<Nota> obtenerListaNotasDesdePrefs() {
@@ -115,14 +110,8 @@ public class Notas extends AppCompatActivity {
     }
 
     private void configurarBotones() {
-        Btn_Create.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Mostrar la NotaNueva al presionar el botón de crear
-                mostrarNotaNueva();
-            }
-        });
 
+        //Boton para guardar notas
         Btn_Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,9 +122,44 @@ public class Notas extends AppCompatActivity {
                 String fecha = textViewFechaSeleccionada.getText().toString();
                 boolean finalizado = checkBoxFinalizado.isChecked();
                 saveNote(id,autor,titulo,descripcion,fecha,finalizado);
+                mostrarNotaNueva();
+                mostrarNotasEnTextView();
+                Btn_Edit.setVisibility(View.VISIBLE);
             }
         });
 
+        //Boton para Borrar por ID
+        btnEditId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idTexto = editTextEditNote.getText().toString();
+                if (idTexto.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Por favor, ingrese un ID válido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int id = Integer.parseInt(idTexto);
+                eliminarNotaPorId(id);
+                editTextEditNote.setText("");
+            }
+        });
+
+        //Boton para Finalizar por id
+        btnFinalizarId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String idTexto = editTextFinalizar.getText().toString();
+                if (idTexto.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Por favor, ingrese un ID válido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int id = Integer.parseInt(idTexto);
+                cambiarEstadoFinalizado(id);
+                editTextFinalizar.setText("");
+            }
+        });
+        //Boton para Crear notas
         Btn_Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,14 +168,11 @@ public class Notas extends AppCompatActivity {
             }
         });
 
-        Btn_Admin.setOnClickListener(new View.OnClickListener() {
+        // Boton para fecha
+        btnDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Notas", "Tamaño de listaNotas: " + listaNotas.size());
-                for (Nota autor : Notas.listaNotas) {
-                    System.out.println("ID: "+autor.getId()+"\nAutor: " + autor.getAutor() +"\nTitulo: "+autor.getTitulo()+ "\nDescripcion: "+ autor.getDescripcion()+"\nFecha: "+autor.getFecha()+"\nStatus:"+autor.isFinalizado());
-                }
-
+                mostrarDatePicker();
             }
         });
 
@@ -172,18 +193,16 @@ public class Notas extends AppCompatActivity {
         Log.d("Notas", "Datos guardados: " + titulo);
         Toast.makeText(getApplicationContext(), "Nota Agregada", Toast.LENGTH_SHORT).show();
 
+
+
     }
 
     private void mostrarNotaNueva() {
 
-
-        // Mostrar la NotaNueva
-        NotaNueva.setVisibility(View.VISIBLE);
-
         // Limpiar los campos de la nueva nota
         editTextTitulo.setText("");
         editTextDescripcion.setText("");
-        textViewFechaSeleccionada.setText("00/00/0000");
+        textViewFechaSeleccionada.setText("00 / 00 / 00");
         checkBoxFinalizado.setChecked(false);
 
         // Deshabilitar la edición
@@ -195,8 +214,59 @@ public class Notas extends AppCompatActivity {
 
     }
 
+    private int buscarPosicionNotaPorId(int id) {
+        for (int i = 0; i < listaNotas.size(); i++) {
+            if (listaNotas.get(i).getId() == id) {
+                return i; // Retorna la posición si encuentra la nota con el ID dado
+            }
+        }
+        return -1; // Retorna -1 si no encuentra la nota con el ID dado
+    }
 
+    private void eliminarNotaPorId(int id) {
+        int posicion = buscarPosicionNotaPorId(id);
 
+        if (posicion != -1) {
+            // Eliminar la nota de la lista
+            listaNotas.remove(posicion);
+
+            // Guardar la lista actualizada en preferencias compartidas
+            SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(listaNotas);
+            editor.putString("listaNotas", json);
+            editor.apply();
+
+            Toast.makeText(getApplicationContext(), "Nota eliminada correctamente", Toast.LENGTH_SHORT).show();
+            mostrarNotasEnTextView(); // Actualizar la visualización de notas
+        } else {
+            Toast.makeText(getApplicationContext(), "No se encontró una nota con ese ID", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void cambiarEstadoFinalizado(int id) {
+        int posicion = buscarPosicionNotaPorId(id);
+
+        if (posicion != -1) {
+            // Cambiar el estado finalizado de la nota
+            Nota nota = listaNotas.get(posicion);
+            nota.setFinalizado(!nota.isFinalizado());
+
+            // Guardar la lista actualizada en preferencias compartidas
+            SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(listaNotas);
+            editor.putString("listaNotas", json);
+            editor.apply();
+
+            Toast.makeText(getApplicationContext(), "Estado finalizado cambiado correctamente", Toast.LENGTH_SHORT).show();
+            mostrarNotasEnTextView(); // Actualizar la visualización de notas
+        } else {
+            Toast.makeText(getApplicationContext(), "No se encontró una nota con ese ID", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private void habilitarEdicion() {
         // Habilitar la edición de los campos
@@ -207,6 +277,8 @@ public class Notas extends AppCompatActivity {
 
         // Mostrar el botón de guardar
         Btn_Save.setVisibility(View.VISIBLE);
+        //Esconder Edit
+        Btn_Edit.setVisibility(View.GONE);
     }
 
     private void deshabilitarEdicion() {
@@ -218,6 +290,22 @@ public class Notas extends AppCompatActivity {
 
         // Ocultar el botón de guardar
         Btn_Save.setVisibility(View.GONE);
+    }
+
+    private void mostrarNotasEnTextView() {
+        StringBuilder notasTexto = new StringBuilder();
+
+        for (Nota nota : listaNotas) {
+            notasTexto.append("ID: ").append(nota.getId()).append("\n");
+            notasTexto.append("Autor: ").append(nota.getAutor()).append("\n");
+            notasTexto.append("Titulo: ").append(nota.getTitulo()).append("\n");
+            notasTexto.append("Descripcion: ").append(nota.getDescripcion()).append("\n");
+            notasTexto.append("Fecha: ").append(nota.getFecha()).append("\n");
+            notasTexto.append("Status: ").append(nota.isFinalizado()).append("\n");
+            notasTexto.append("------------------------------------------------\n\n");
+        }
+
+        Shownotes.setText(notasTexto.toString());
     }
 
     public void onDatePickerButtonClick(View view) {

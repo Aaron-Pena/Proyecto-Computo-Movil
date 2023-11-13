@@ -43,25 +43,7 @@
                         android:textColor="@color/black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
-                    <Button
-                        android:id="@+id/Btn_Create"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textSize="20sp"
-                        android:textColor="@color/white"
-                        android:text="Crear Nota">
-                    </Button>
 
-                    <Button
-                        android:id="@+id/Btn_Admin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textSize="20sp"
-                        android:textColor="@color/white"
-                        android:text="Admin">
-                    </Button>
 
                     <!-- Carta de Notas -->
                     <androidx.appcompat.widget.LinearLayoutCompat
@@ -109,6 +91,7 @@
                                     android:text="Date"
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
+                                    android:backgroundTint="@color/Buttons"
                                     android:onClick="onDatePickerButtonClick"/>
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -216,14 +199,6 @@
                                 android:layout_gravity="center"
                                 android:layout_marginTop="10dp">
 
-                                <Button
-                                    android:id="@+id/Btn_Delete"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="10dp"
-                                    android:textSize="15sp"
-                                    android:textColor="@color/white"
-                                    android:text="Delete"/>
 
                                 <Button
                                     android:id="@+id/Btn_Edit"
@@ -231,24 +206,120 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
-                                    android:text="Edit"/>
+                                    android:backgroundTint="@color/Buttons"
+                                    android:text="Crear"/>
 
                                 <Button
                                     android:id="@+id/Btn_Save"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
-                                    android:text="Save"/>
+                                    android:backgroundTint="@color/Buttons"
+                                    android:text="Guardar"/>
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
+                            <!-- TextView y EditText para Eliminar -->
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="30dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Borrar:"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/editTextEditNote"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Ingrese el ID" />
+
+                                <Button
+                                    android:id="@+id/btnEditId"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="OK"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/white"
+                                    android:backgroundTint="@color/Buttons"
+                                    android:onClick="onEditIdButtonClick"/>
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            <!-- TextView y EditText para Finalizar -->
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="30dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Finalizar:"
+                                    android:textColor="@color/black"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                                <EditText
+                                    android:id="@+id/editTextFinalizar"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="Ingrese el ID" />
+
+                                <Button
+                                    android:id="@+id/btnFinalizarId"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="OK"
+                                    android:textSize="15sp"
+                                    android:textColor="@color/white"
+                                    android:backgroundTint="@color/Buttons"
+                                    android:onClick="onEditIdButtonClick"/>
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
                         </androidx.appcompat.widget.LinearLayoutCompat>
+
 
                     </androidx.cardview.widget.CardView>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/ViewNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="10dp"
+                        android:layout_margin="10dp"
+                        app:cardBackgroundColor="@color/backgroundCards"
+                        >
+                        <TextView
+                            android:id="@+id/Shownotes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:layout_margin="25dp"
+                            android:hint="No hay notas creadas" />
+
+                    </androidx.cardview.widget.CardView>
+
 
 
 

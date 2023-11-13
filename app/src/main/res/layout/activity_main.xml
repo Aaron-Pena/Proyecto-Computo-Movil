@@ -110,6 +110,7 @@
                         android:layout_marginTop="10dp"
                         android:textSize="20sp"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/Buttons"
                         android:text="Entrar">
                     </Button>
 
@@ -120,6 +121,7 @@
                         android:layout_marginTop="10dp"
                         android:textSize="20sp"
                         android:textColor="@color/white"
+                        android:backgroundTint="@color/Buttons"
                         android:text="Registrar">
                     </Button>
 
