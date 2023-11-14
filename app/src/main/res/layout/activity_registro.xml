@@ -17,7 +17,8 @@
             android:layout_alignParentTop="true"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:background="@color/backgroundInit">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -31,7 +32,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="30dp">
+                    android:padding="30dp"
+                    android:background="@color/background">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -43,7 +45,9 @@
                         android:text="Registro de usuario"
                         android:textColor="@color/black"
                         android:textSize="30sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/agbalumo"
+                        />
 
 
                     <TextView
@@ -54,7 +58,8 @@
                         android:padding="5dp"
                         android:textColor="@color/black"
                         android:textSize="25sp"
-                        android:text="Cree un usuario">
+                        android:text="Cree un usuario"
+                        android:fontFamily="@font/agbalumo">
 
                     </TextView>
 
@@ -71,7 +76,8 @@
                             android:hint="..."
                             android:inputType="textEmailAddress"
                             android:padding="20dp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:background="@color/white"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
@@ -83,6 +89,7 @@
                         android:text="Crea una constraseña"
                         android:textColor="@color/black"
                         android:textSize="25sp"
+                        android:fontFamily="@font/agbalumo"
                         >
                     </TextView>
 
@@ -99,7 +106,8 @@
                             android:hint="..."
                             android:inputType="textPassword"
                             android:padding="20dp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:background="@color/white"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
@@ -111,6 +119,7 @@
                         android:text="Confirme constraseña"
                         android:textColor="@color/black"
                         android:textSize="25sp"
+                        android:fontFamily="@font/agbalumo"
                         >
                     </TextView>
 
@@ -127,7 +136,8 @@
                             android:hint="..."
                             android:inputType="textPassword"
                             android:padding="20dp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:background="@color/white"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -139,7 +149,8 @@
                         android:textSize="20sp"
                         android:textColor="@color/white"
                         android:backgroundTint="@color/Buttons"
-                        android:text="Terminar registro">
+                        android:text="Terminar registro"
+                        android:fontFamily="@font/agbalumo">
                     </Button>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>

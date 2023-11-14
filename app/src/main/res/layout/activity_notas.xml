@@ -16,7 +16,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/backgroundInit"
+            >
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -30,7 +32,10 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:orientation="vertical"
-                    android:padding="15dp">
+                    android:padding="15dp"
+                    android:background="@color/backgroundInit"
+
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -40,6 +45,7 @@
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="Notas"
+                        android:fontFamily="@font/agbalumo"
                         android:textColor="@color/black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
@@ -49,7 +55,8 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/NoteLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        >
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/NotaNueva"
@@ -66,13 +73,15 @@
                             android:orientation="vertical"
                             android:padding="30dp"
                             app:cardCornerRadius="10dp"
+
                             >
 
                             <!-- TextView y EditText para Fecha -->
                             <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                >
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -82,7 +91,8 @@
                                     android:text="Fecha de entrega:"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/agbalumo"/>
 
                                 <Button
                                     android:id="@+id/btnDatePicker"
@@ -92,7 +102,8 @@
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
                                     android:backgroundTint="@color/Buttons"
-                                    android:onClick="onDatePickerButtonClick"/>
+                                    android:onClick="onDatePickerButtonClick"
+                                    android:fontFamily="@font/agbalumo"/>
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -105,7 +116,8 @@
                                 android:background="@color/white"
                                 android:text="00 / 00 / 00"
                                 android:textSize="15sp"
-                                android:textColor="@color/black"/>
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/agbalumo"/>
 
                             <!-- TextView y EditText para Autor -->
                             <androidx.appcompat.widget.LinearLayoutCompat
@@ -121,14 +133,16 @@
                                     android:text="Autor:"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/agbalumo"/>
 
                                 <TextView
                                     android:id="@+id/textViewAutor"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:hint="USER" />
+                                    android:hint="USER"
+                                    android:fontFamily="@font/agbalumo"/>
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -147,14 +161,16 @@
                                     android:text="Titulo:"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/agbalumo"/>
 
                                 <EditText
                                     android:id="@+id/editTextTitulo"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:hint="Ingrese el título" />
+                                    android:hint="Ingrese el título"
+                                    android:fontFamily="@font/agbalumo"/>
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -172,14 +188,16 @@
                                     android:text="Descripcion:"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/agbalumo"/>
 
                                 <EditText
                                     android:id="@+id/editTextDescripcion"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:hint="Ingrese la descripción" />
+                                    android:hint="Ingrese la descripción"
+                                    android:fontFamily="@font/agbalumo"/>
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -190,7 +208,8 @@
                                 android:layout_marginTop="10dp"
                                 android:text="Finalizado"
                                 android:textSize="15sp"
-                                android:textColor="@color/black"/>
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/agbalumo"/>
 
                             <androidx.appcompat.widget.LinearLayoutCompat
                                 android:layout_width="match_parent"
@@ -207,7 +226,8 @@
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
                                     android:backgroundTint="@color/Buttons"
-                                    android:text="Crear"/>
+                                    android:text="Crear"
+                                    android:fontFamily="@font/agbalumo"/>
 
                                 <Button
                                     android:id="@+id/Btn_Save"
@@ -216,7 +236,8 @@
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
                                     android:backgroundTint="@color/Buttons"
-                                    android:text="Guardar"/>
+                                    android:text="Guardar"
+                                    android:fontFamily="@font/agbalumo"/>
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -235,7 +256,8 @@
                                     android:text="Borrar:"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/agbalumo"/>
 
                                 <EditText
                                     android:id="@+id/editTextEditNote"
@@ -243,7 +265,8 @@
                                     android:layout_height="wrap_content"
                                     android:inputType="number"
                                     android:layout_weight="1"
-                                    android:hint="Ingrese el ID" />
+                                    android:hint="Ingrese el ID"
+                                    android:fontFamily="@font/agbalumo"/>
 
                                 <Button
                                     android:id="@+id/btnEditId"
@@ -253,7 +276,8 @@
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
                                     android:backgroundTint="@color/Buttons"
-                                    android:onClick="onEditIdButtonClick"/>
+                                    android:onClick="onEditIdButtonClick"
+                                    android:fontFamily="@font/agbalumo"/>
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -272,7 +296,8 @@
                                     android:text="Finalizar:"
                                     android:textColor="@color/black"
                                     android:textSize="15sp"
-                                    android:textStyle="bold" />
+                                    android:textStyle="bold"
+                                    android:fontFamily="@font/agbalumo"/>
 
                                 <EditText
                                     android:id="@+id/editTextFinalizar"
@@ -280,7 +305,8 @@
                                     android:layout_height="wrap_content"
                                     android:inputType="number"
                                     android:layout_weight="1"
-                                    android:hint="Ingrese el ID" />
+                                    android:hint="Ingrese el ID"
+                                    android:fontFamily="@font/agbalumo"/>
 
                                 <Button
                                     android:id="@+id/btnFinalizarId"
@@ -290,7 +316,8 @@
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
                                     android:backgroundTint="@color/Buttons"
-                                    android:onClick="onEditIdButtonClick"/>
+                                    android:onClick="onEditIdButtonClick"
+                                    android:fontFamily="@font/agbalumo"/>
 
                             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -318,7 +345,8 @@
                             android:layout_weight="1"
                             android:layout_gravity="center"
                             android:layout_margin="25dp"
-                            android:hint="No hay notas creadas" />
+                            android:hint="No hay notas creadas"
+                            android:fontFamily="@font/agbalumo"/>
 
                     </androidx.cardview.widget.CardView>
 
