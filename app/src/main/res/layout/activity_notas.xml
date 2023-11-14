@@ -241,6 +241,7 @@
                                     android:id="@+id/editTextEditNote"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:inputType="number"
                                     android:layout_weight="1"
                                     android:hint="Ingrese el ID" />
 
@@ -277,6 +278,7 @@
                                     android:id="@+id/editTextFinalizar"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:inputType="number"
                                     android:layout_weight="1"
                                     android:hint="Ingrese el ID" />
 

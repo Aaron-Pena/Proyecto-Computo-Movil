@@ -45,7 +45,6 @@ public class Notas extends AppCompatActivity {
 
     private int posicionNotaEditando = -1;
 
-    private int _id= 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +114,7 @@ public class Notas extends AppCompatActivity {
         Btn_Save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int id = _id++;
+                int id = listaNotas.size() + 1;
                 String autor = textViewAutor.getText().toString();
                 String titulo = editTextTitulo.getText().toString();
                 String descripcion = editTextDescripcion.getText().toString();
