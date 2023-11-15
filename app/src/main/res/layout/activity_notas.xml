@@ -17,7 +17,7 @@
             android:layout_alignParentTop="true"
             android:gravity="center"
             android:orientation="vertical"
-            android:background="@color/backgroundInit"
+            android:background="@color/BG"
             >
 
             <androidx.cardview.widget.CardView
@@ -33,7 +33,7 @@
                     android:gravity="center"
                     android:orientation="vertical"
                     android:padding="15dp"
-                    android:background="@color/backgroundInit"
+                    android:background="@color/BGstyle_2"
 
                     >
 
@@ -101,7 +101,7 @@
                                     android:text="Date"
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
-                                    android:backgroundTint="@color/Buttons"
+                                    android:backgroundTint="@color/BG_1"
                                     android:onClick="onDatePickerButtonClick"
                                     android:fontFamily="@font/agbalumo"/>
 
@@ -225,7 +225,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
-                                    android:backgroundTint="@color/Buttons"
+                                    android:backgroundTint="@color/BG_1"
                                     android:text="Crear"
                                     android:fontFamily="@font/agbalumo"/>
 
@@ -235,7 +235,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
-                                    android:backgroundTint="@color/Buttons"
+                                    android:backgroundTint="@color/BG_1"
                                     android:text="Guardar"
                                     android:fontFamily="@font/agbalumo"/>
 
@@ -275,7 +275,7 @@
                                     android:text="OK"
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
-                                    android:backgroundTint="@color/Buttons"
+                                    android:backgroundTint="@color/BG_1"
                                     android:onClick="onEditIdButtonClick"
                                     android:fontFamily="@font/agbalumo"/>
 
@@ -315,7 +315,7 @@
                                     android:text="OK"
                                     android:textSize="15sp"
                                     android:textColor="@color/white"
-                                    android:backgroundTint="@color/Buttons"
+                                    android:backgroundTint="@color/BG_1"
                                     android:onClick="onEditIdButtonClick"
                                     android:fontFamily="@font/agbalumo"/>
 

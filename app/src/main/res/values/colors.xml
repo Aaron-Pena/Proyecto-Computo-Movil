@@ -4,7 +4,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#FFB6D9</color>
     <color name="backgroundCards">#FEFFAC</color>
-    <color name="Buttons">#D67BFF</color>
     <color name="backgroundInit">#CAEDFF</color>
+    <color name="Buttons">#D67BFF</color>
+    <color name="BG">#8DEC5F34</color>
+    <color name="BG_1">#6DEC346E</color>
+    <color name="BGstyle_1">#0E8BAA</color>
+    <color name="BGstyle_2">#A0437E</color>
+    <color name="Bttnstyle_1">#D80939</color>
 
 </resources>
