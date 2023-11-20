@@ -10,6 +10,8 @@
     <color name="BG_1">#6DEC346E</color>
     <color name="BGstyle_1">#0E8BAA</color>
     <color name="BGstyle_2">#A0437E</color>
+    <color name="BGstyle_3">#C06FA2</color>
+    <color name="BGstyle_4">#95236B</color>
     <color name="Bttnstyle_1">#D80939</color>
 
 </resources>

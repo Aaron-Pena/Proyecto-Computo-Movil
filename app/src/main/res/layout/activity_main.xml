@@ -49,7 +49,7 @@
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="Inicio de sesion"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="30sp"
                         android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="Usuario"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="25sp">
 
                     </TextView>
@@ -76,7 +76,7 @@
                             android:id="@+id/userField"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/white"
+                            android:background="@drawable/rounded_edittext"
                             android:drawablePadding="10dp"
                             android:hint="..."
                             android:inputType="textEmailAddress"
@@ -92,7 +92,7 @@
                         android:gravity="center"
                         android:padding="5dp"
                         android:text="Constraseña"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="25sp">
 
                     </TextView>
@@ -107,7 +107,7 @@
                             android:id="@+id/passwordField"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/white"
+                            android:background="@drawable/rounded_edittext"
                             android:drawablePadding="10dp"
                             android:hint="..."
                             android:inputType="textPassword"
