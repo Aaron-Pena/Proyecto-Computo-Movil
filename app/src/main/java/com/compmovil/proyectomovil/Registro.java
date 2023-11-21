@@ -13,7 +13,11 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-
+//Equipo:
+// Encinas Torres Estefania
+// Peña Camarena Aaron
+// Teran Soto Jose Luis
+// */
 public class Registro extends AppCompatActivity {
 
     private Button Btn_NewRegistrar;

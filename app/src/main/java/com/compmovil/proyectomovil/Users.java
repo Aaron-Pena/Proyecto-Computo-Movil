@@ -1,5 +1,9 @@
 package com.compmovil.proyectomovil;
-
+//Equipo:
+// Encinas Torres Estefania
+// Peña Camarena Aaron
+// Teran Soto Jose Luis
+// */
 public class Users {
     private String user;
     private String password;

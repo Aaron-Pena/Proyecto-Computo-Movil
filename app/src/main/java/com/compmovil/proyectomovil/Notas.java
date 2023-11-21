@@ -29,7 +29,11 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
+//Equipo:
+// Encinas Torres Estefania
+// Peña Camarena Aaron
+// Teran Soto Jose Luis
+// */
 public class Notas extends AppCompatActivity {
 
     private Button btnDatePicker, Btn_Save, Btn_Edit,btnEditId,btnFinalizarId;

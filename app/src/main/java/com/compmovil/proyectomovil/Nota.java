@@ -6,7 +6,11 @@ import com.google.gson.reflect.TypeToken;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.List;
-
+//Equipo:
+// Encinas Torres Estefania
+// Peña Camarena Aaron
+// Teran Soto Jose Luis
+// */
 public class Nota  {
 
     private int id;

@@ -16,6 +16,12 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+//Equipo:
+// Encinas Torres Estefania
+// Peña Camarena Aaron
+// Teran Soto Jose Luis
+// */
+
 public class MainActivity extends AppCompatActivity {
     private Button Btn_Entrar,Btn_Registrar,Btn_admin;
     private EditText passwordField, userField;
